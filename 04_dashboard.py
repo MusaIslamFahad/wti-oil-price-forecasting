@@ -261,7 +261,7 @@ GEOPOLITICAL_EVENTS = [
 # ─────────────────────────────────────────────────────────────────────────────
 # PLOTLY THEME  (applied to every figure)
 # ─────────────────────────────────────────────────────────────────────────────
-PLOTLY_LAYOUT = dict(
+_PLOTLY_BASE = dict(
     font=dict(family="DM Sans, sans-serif", size=12, color="#333"),
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
@@ -276,6 +276,12 @@ PLOTLY_LAYOUT = dict(
     yaxis=dict(showgrid=True, gridcolor="#f0f0f0", gridwidth=1, zeroline=False),
     hoverlabel=dict(bgcolor="white", bordercolor="#ccc", font_size=12),
 )
+
+def PLOTLY_LAYOUT(**overrides):
+    """Return a merged layout dict — caller's kwargs win over base defaults."""
+    merged = dict(_PLOTLY_BASE)
+    merged.update(overrides)
+    return merged
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -489,15 +495,14 @@ with tab_price:
                 borderwidth=0.8, borderpad=3, opacity=0.9,
             )
 
-    fig.update_layout(
-        **PLOTLY_LAYOUT,
+    fig.update_layout(**PLOTLY_LAYOUT(
         height=500,
         title=dict(text="WTI Crude Oil Price 1970–2026", font=dict(size=16)),
         yaxis_title="USD / barrel",
         xaxis_title="",
         hovermode="x unified",
-    )
-    st.plotly_chart(fig, use_container_width=True)
+    ))
+    st.plotly_chart(fig, width="stretch")
 
     # ── Decade stats ──────────────────────────────────────────────────────
     st.markdown('<div class="section-header">Decade-by-Decade Statistics</div>',
@@ -533,21 +538,20 @@ with tab_price:
             name="CV (%)",
             hovertemplate="CV: %{y:.1f}%<extra></extra>",
         ))
-        fig2.update_layout(
-            **PLOTLY_LAYOUT,
+        fig2.update_layout(**PLOTLY_LAYOUT(
             height=320,
             title="Mean price and volatility by decade",
             yaxis_title="Mean price (USD/bbl)",
             yaxis2=dict(title="CV (%)", overlaying="y", side="right",
                         showgrid=False, zeroline=False),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        )
-        st.plotly_chart(fig2, use_container_width=True)
+        ))
+        st.plotly_chart(fig2, width="stretch")
 
     with col_b:
         st.dataframe(
             decade_stats[["Mean", "Std", "Min", "Max", "CV (%)"]],
-            use_container_width=True,
+            width="stretch",
             height=320,
         )
 
@@ -565,12 +569,12 @@ with tab_price:
             marker_color=C_PURPLE, opacity=0.7,
             name="Log returns",
         ))
-        fig3.update_layout(
-            **PLOTLY_LAYOUT, height=300,
+        fig3.update_layout(**PLOTLY_LAYOUT(
+            height=300,
             title="Monthly log-return distribution",
             xaxis_title="Log return", yaxis_title="Count",
-        )
-        st.plotly_chart(fig3, use_container_width=True)
+        ))
+        st.plotly_chart(fig3, width="stretch")
 
     with col_d:
         # Heatmap: year × month avg price
@@ -586,8 +590,8 @@ with tab_price:
             title="Year × Month price heatmap",
             aspect="auto",
         )
-        fig4.update_layout(**PLOTLY_LAYOUT, height=300)
-        st.plotly_chart(fig4, use_container_width=True)
+        fig4.update_layout(**PLOTLY_LAYOUT(height=300))
+        st.plotly_chart(fig4, width="stretch")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -673,15 +677,14 @@ with tab_events:
             ),
         ))
 
-    fig_ev.update_layout(
-        **PLOTLY_LAYOUT,
+    fig_ev.update_layout(**PLOTLY_LAYOUT(
         height=460,
         title="Price trajectories around shock events (shock month = 100)",
         xaxis_title=f"Months relative to shock (±{window_months})",
         yaxis_title="Normalised price (shock = 100)",
         hovermode="x unified",
-    )
-    st.plotly_chart(fig_ev, use_container_width=True)
+    ))
+    st.plotly_chart(fig_ev, width="stretch")
 
     # ── Impact metrics table ──────────────────────────────────────────────
     if not events_df.empty:
@@ -706,7 +709,7 @@ with tab_events:
 
         st.dataframe(
             events_df[available].style.apply(highlight_direction, axis=1),
-            use_container_width=True,
+            width="stretch",
             height=380,
         )
 
@@ -797,14 +800,13 @@ with tab_forecast:
             annotation_font_size=10,
         )
 
-        fig_fwd.update_layout(
-            **PLOTLY_LAYOUT,
+        fig_fwd.update_layout(**PLOTLY_LAYOUT(
             height=480,
             title="12-Month Forward Forecast — All Selected Models",
             yaxis_title="USD / barrel",
             hovermode="x unified",
-        )
-        st.plotly_chart(fig_fwd, use_container_width=True)
+        ))
+        st.plotly_chart(fig_fwd, width="stretch")
 
         # ── Forecast table ────────────────────────────────────────────────
         st.markdown('<div class="section-header">Forecast Values Table</div>',
@@ -815,7 +817,7 @@ with tab_forecast:
         display_fwd.index.name = "Month"
         display_fwd = display_fwd.round(2)
 
-        st.dataframe(display_fwd, use_container_width=True)
+        st.dataframe(display_fwd, width="stretch")
 
         # Download button
         csv_bytes = display_fwd.to_csv().encode()
@@ -895,14 +897,13 @@ with tab_compare:
                 hovertemplate=f"<b>%{{x|%b %Y}}</b><br>{model}: $%{{y:.2f}}<extra></extra>",
             ))
 
-        fig_test.update_layout(
-            **PLOTLY_LAYOUT,
+        fig_test.update_layout(**PLOTLY_LAYOUT(
             height=380,
             title="Actual vs Predicted — Test Period",
             yaxis_title="USD / barrel",
             hovermode="x unified",
-        )
-        st.plotly_chart(fig_test, use_container_width=True)
+        ))
+        st.plotly_chart(fig_test, width="stretch")
 
         # ── Residuals ─────────────────────────────────────────────────────
         if "actual" in test_df.columns:
@@ -926,14 +927,13 @@ with tab_compare:
                     ),
                 ))
 
-            fig_res.update_layout(
-                **PLOTLY_LAYOUT,
+            fig_res.update_layout(**PLOTLY_LAYOUT(
                 height=300,
                 title="Prediction Residuals (Actual − Forecast)",
                 yaxis_title="Residual (USD/bbl)",
                 hovermode="x unified",
-            )
-            st.plotly_chart(fig_res, use_container_width=True)
+            ))
+            st.plotly_chart(fig_res, width="stretch")
 
         # ── Metric bar charts ─────────────────────────────────────────────
         if not metrics_df.empty and "RMSE" in metrics_df.columns:
@@ -950,13 +950,13 @@ with tab_compare:
                         marker_color=[MODEL_COLORS.get(m, C_GRAY) for m in avail_m],
                         hovertemplate=f"{metric}: $%{{y:.2f}}<extra></extra>",
                     ))
-                fig_m.update_layout(
-                    **PLOTLY_LAYOUT, height=320,
+                fig_m.update_layout(**PLOTLY_LAYOUT(
+                    height=320,
                     title="RMSE and MAE (lower = better)",
                     yaxis_title="Error (USD/bbl)",
                     barmode="group",
-                )
-                st.plotly_chart(fig_m, use_container_width=True)
+                ))
+                st.plotly_chart(fig_m, width="stretch")
 
             with col_m2:
                 avail_m = [m for m in ["ARIMA", "Prophet", "LSTM"] if m in metrics_df.index]
@@ -969,12 +969,12 @@ with tab_compare:
                     textposition="outside",
                     hovertemplate="MAPE: %{y:.2f}%<extra></extra>",
                 ))
-                fig_mape.update_layout(
-                    **PLOTLY_LAYOUT, height=320,
+                fig_mape.update_layout(**PLOTLY_LAYOUT(
+                    height=320,
                     title="MAPE — % of actual price (lower = better)",
                     yaxis_title="MAPE (%)",
-                )
-                st.plotly_chart(fig_mape, use_container_width=True)
+                ))
+                st.plotly_chart(fig_mape, width="stretch")
 
             # Full metrics table
             st.markdown('<div class="section-header">Full Evaluation Table</div>',
@@ -983,7 +983,7 @@ with tab_compare:
                 metrics_df[["RMSE", "MAE", "MAPE"]].style.highlight_min(
                     axis=0, color="#e8f5e9"
                 ),
-                use_container_width=True,
+                width="stretch",
             )
             st.caption(
                 "Green cells = best value for that metric. "
@@ -1012,7 +1012,7 @@ with tab_data:
         # Show table (most recent first)
         st.dataframe(
             df_filtered[selected_cols].iloc[::-1].round(4),
-            use_container_width=True,
+            width="stretch",
             height=400,
         )
 
@@ -1032,7 +1032,7 @@ with tab_data:
                     if df_filtered[c].dtype in [float, int] and c != "regime"]
     st.dataframe(
         df_filtered[numeric_cols].describe().round(4),
-        use_container_width=True,
+        width="stretch",
     )
 
     # ── Correlation matrix ─────────────────────────────────────────────────
@@ -1052,8 +1052,8 @@ with tab_data:
         title="Pearson correlation matrix",
         aspect="auto",
     )
-    fig_corr.update_layout(**PLOTLY_LAYOUT, height=380)
-    st.plotly_chart(fig_corr, use_container_width=True)
+    fig_corr.update_layout(**PLOTLY_LAYOUT(height=380))
+    st.plotly_chart(fig_corr, width="stretch")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
