@@ -1,0 +1,11 @@
+Event,Date,Type,Direction,Price at shock ($),Baseline price ($),Extreme price ($),Change from shock (%),Change from baseline (%),Months to extreme,Recovery months,3M abnormal return (%)
+1973 Arab Oil Embargo,1973-10-01,Supply shock,Spike,4.1,2.25,13.0,217.1,477.8,3,Not in window,212.11
+1979 Iranian Revolution,1979-01-01,Supply shock,Spike,17.45,12.92,40.75,133.5,215.5,10,Not in window,24.22
+1986 OPEC Price Collapse,1986-01-01,Supply shock,Crash,24.68,27.18,9.62,-61.0,-64.6,6,Not in window,-51.31
+1990 Gulf War,1990-08-01,Supply shock,Spike,26.4,17.87,34.5,30.7,93.1,2,6,16.15
+1998 Asian Financial Crisis,1998-01-01,Demand shock,Crash,15.0,19.17,10.41,-30.6,-45.7,11,18,-7.39
+2008 Pre-Crisis Peak,2008-07-01,Demand shock,Spike,132.83,94.35,132.83,0.0,40.8,0,2,-54.21
+2008 Global Financial Crisis,2008-09-01,Financial crisis,Crash,99.66,102.98,41.34,-58.5,-59.9,3,Not in window,-56.69
+2014 OPEC Price War,2014-11-01,Supply shock,Crash,76.99,102.1,29.78,-61.3,-70.8,14,Not in window,-22.4
+2020 COVID-19 Crash,2020-03-01,Demand shock,Crash,32.2,61.18,21.04,-34.7,-65.6,1,11,26.3
+2022 Russia-Ukraine War,2022-02-01,Supply shock,Spike,93.54,71.6,116.8,24.9,63.1,4,10,16.46

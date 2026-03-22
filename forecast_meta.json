@@ -1,0 +1,31 @@
+{
+  "last_data_date": "2026-03-01",
+  "forecast_start": "2026-04-01",
+  "forecast_end": "2027-03-01",
+  "test_months": 24,
+  "look_back": 24,
+  "arima_order": "(2, 1, 1)",
+  "arima_seasonal": "(0, 0, 0, 12)",
+  "metrics": {
+    "RMSE": {
+      "ARIMA (walk-forward)": 5.7498,
+      "Prophet (custom changepoints)": 22.1845,
+      "LSTM (walk-forward)": 6.7405
+    },
+    "MAE": {
+      "ARIMA (walk-forward)": 3.8816,
+      "Prophet (custom changepoints)": 17.7257,
+      "LSTM (walk-forward)": 4.661
+    },
+    "MAPE": {
+      "ARIMA (walk-forward)": 5.28,
+      "Prophet (custom changepoints)": 26.54,
+      "LSTM (walk-forward)": 6.4
+    },
+    "Rank (RMSE)": {
+      "ARIMA (walk-forward)": 1,
+      "Prophet (custom changepoints)": 3,
+      "LSTM (walk-forward)": 2
+    }
+  }
+}

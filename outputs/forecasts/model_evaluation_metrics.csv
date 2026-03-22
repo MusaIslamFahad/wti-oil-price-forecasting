@@ -1,0 +1,4 @@
+model,RMSE,MAE,MAPE,Rank (RMSE)
+ARIMA (walk-forward),5.7498,3.8816,5.28,1
+Prophet (custom changepoints),22.1845,17.7257,26.54,3
+LSTM (walk-forward),6.7405,4.661,6.4,2
