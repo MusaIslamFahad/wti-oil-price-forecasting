@@ -225,9 +225,9 @@ Requires `data/oil_clean.csv` and `outputs/forecasts/*.csv` to exist
    The event study revealed that the **2014 OPEC Price War had the slowest recovery** —
    prices had not returned to pre-shock baseline within 24 months, while the 2008 crash
    (which looked more severe visually) recovered faster because it was demand-driven
-   and demand eventually rebounded. -->
+   and demand eventually rebounded. 
 
----
+---   -->
 
 ## 📄 License
 
