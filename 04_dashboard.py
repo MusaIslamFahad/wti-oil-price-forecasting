@@ -89,7 +89,7 @@ st.markdown("""
     html, body, [class*="css"] {
         font-family: 'DM Sans', sans-serif;
     }
-    h1, h2 { font-family: 'DM Serif Display', serif; color: #E8F4FD !important; }
+    h1, h2 { font-family: 'DM Serif Display', serif; color: #cce4f7; !important; }
     /* ── Sidebar ── */
     [data-testid="stSidebar"] {
         background: #0d1117;
@@ -373,7 +373,7 @@ df_filtered = df[
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown(
     "<h1 style='font-family: DM Serif Display, serif; font-size:2.2rem; "
-    "margin-bottom:0; color: #E8F4FD;'>Crude Oil Price Analysis & Forecasting</h1>",
+    "margin-bottom:0; color: #cce4f7;'>Crude Oil Price Analysis & Forecasting</h1>",
     #"<h1 style='font-family: DM Serif Display, serif; font-size:2.2rem; "
     #"margin-bottom:0; color:#1a1a2e;'>Crude Oil Price Analysis & Forecasting</h1>",
     unsafe_allow_html=True,
