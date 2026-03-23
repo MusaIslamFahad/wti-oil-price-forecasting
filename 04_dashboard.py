@@ -68,10 +68,15 @@ MODEL_COLORS = {
 }
 
 def ts(x):
-    """Convert a pandas Timestamp to a plain ISO-8601 string.
-    Plotly 6.x no longer accepts Timestamp objects in add_vline /
-    add_vrect / add_annotation — it requires a string or number."""
-    return x.isoformat() if hasattr(x, "isoformat") else str(x)
+    """Convert a pandas Timestamp to milliseconds since Unix epoch (int).
+    Plotly 6.x add_vline / add_vrect / add_annotation internally calls
+    float(sum([x, x])) to find the annotation midpoint — which works for
+    numbers but crashes on ISO strings.  Returning ms-since-epoch (the
+    native numeric format Plotly uses for datetime axes) fixes the crash
+    while keeping date positioning correct."""
+    if hasattr(x, "timestamp"):          # pandas Timestamp / datetime
+        return int(x.timestamp() * 1000)
+    return x
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CUSTOM CSS
