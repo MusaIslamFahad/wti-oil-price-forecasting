@@ -100,14 +100,14 @@ st.markdown("""
 
     /* ── Metric cards ── */
     [data-testid="stMetric"] {
-        background: #f8f9fb;
-        border: 1px solid #e8eaed;
+        background: #1e2d3d;
+        border: 1px solid #2a3f54;
         border-radius: 10px;
         padding: 1rem 1.25rem;
     }
-    [data-testid="stMetricLabel"] { font-size: 12px !important; color: #666 !important; }
-    [data-testid="stMetricValue"] { font-size: 24px !important; font-weight: 600 !important; }
-
+    [data-testid="stMetricLabel"] { font-size: 12px !important; color: #8aafc7 !important; }
+    [data-testid="stMetricValue"] { font-size: 24px !important; font-weight: 600 !important; color: #ddeeff !important; }
+    
     /* ── Tab styling ── */
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
@@ -131,7 +131,7 @@ st.markdown("""
     .section-header {
         font-family: 'DM Serif Display', serif;
         font-size: 1.4rem;
-        color: #1a1a2e;
+        color: #cce4f7;
         margin: 1.5rem 0 0.5rem;
         padding-bottom: 6px;
         border-bottom: 2px solid #3266AD;
