@@ -89,8 +89,7 @@ st.markdown("""
     html, body, [class*="css"] {
         font-family: 'DM Sans', sans-serif;
     }
-    h1, h2 { font-family: 'DM Serif Display', serif; }
-
+    h1, h2 { font-family: 'DM Serif Display', serif; color: #E8F4FD !important; }
     /* ── Sidebar ── */
     [data-testid="stSidebar"] {
         background: #0d1117;
