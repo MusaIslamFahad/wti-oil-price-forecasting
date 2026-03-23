@@ -374,7 +374,9 @@ df_filtered = df[
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown(
     "<h1 style='font-family: DM Serif Display, serif; font-size:2.2rem; "
-    "margin-bottom:0; color:#1a1a2e;'>Crude Oil Price Analysis & Forecasting</h1>",
+    "margin-bottom:0; color:#E8F4FD;'>Crude Oil Price Analysis & Forecasting</h1>",
+    #"<h1 style='font-family: DM Serif Display, serif; font-size:2.2rem; "
+    #"margin-bottom:0; color:#1a1a2e;'>Crude Oil Price Analysis & Forecasting</h1>",
     unsafe_allow_html=True,
 )
 st.markdown(
