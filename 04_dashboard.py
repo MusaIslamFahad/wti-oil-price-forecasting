@@ -1077,5 +1077,5 @@ st.markdown(
     "Data: WTI Monthly Prices 1970–2026 · "
     "Models: ARIMA · Facebook Prophet · LSTM"
     "</div>",
-    unsafe_allow_html=True,
+
 )
