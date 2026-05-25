@@ -2,7 +2,7 @@
 
 # 🛢️ WTI Oil Price Analysis & Forecasting (1970-2026)
 
-An end to end data science project analysing 56 years of WTI crude oil prices- covering EDA, geopolitical event quantification, structural break detection, and ARIMA, Prophet & LSTM forecasting deployed as a live interactive Streamlit dashboard.
+**An end to end data science project analysing 56 years of WTI crude oil prices- covering EDA, geopolitical event quantification, structural break detection and ARIMA, Prophet & LSTM forecasting deployed as a live interactive Streamlit dashboard.**
 
 <p align="center">
 
@@ -19,6 +19,8 @@ An end to end data science project analysing 56 years of WTI crude oil prices- c
 <img src="https://img.shields.io/github/stars/MusaIslamFahad/Crude_Oil_Price_Analysis_and_Forecasting-1970-2026-?style=for-the-badge&logo=github&label=GitHub%20Stars&color=0f172a" />
 
 </p>
+
+![WTI Oil Price Forecasting Banner](https://raw.githubusercontent.com/MusaIslamFahad/wti-oil-price-forecasting/main/assets/banner.png)
 
 </div>
 
